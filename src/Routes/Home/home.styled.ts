@@ -26,14 +26,34 @@ export const containerInicio = styled("div")({
     height: "100%",
     backgroundColor: "#FB5B4D",
     borderRadius: "5rem",
-    borderTopLeftRadius: "15rem",
-    borderBottomRightRadius: "15rem",
-    div: {
+    borderTopLeftRadius: "20rem",
+    borderBottomRightRadius: "20rem",
+    ".card": {
+        width: "40%",
+        height: theme.spacing(20),
+        display: "grid",
+        placeItems: "center",
         position: "absolute",
         top: "50%",
-        left: "20%",
-        transform: "translate(-20%, -50%)",
-        padding: "5rem",
-        backgroundColor: "rgba(253, 253, 253, 0.8)"
+        left: "15%",
+        transform: "translate(-15%, -50%)",
+        backgroundColor: "#FAFAFA",
+        borderRadius: theme.spacing(1.2),
+    }
+})
+
+export const fundoCard = styled("div")({
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.spacing(20),
+    backgroundColor: "#01017D",
+    position: "absolute",
+    top: "50%",
+    right: "-50%",
+    transform: "translate(0%, -50%)",
+    display: "grid",
+    placeItems: "center",
+    img: {
+        width: "90%"
     }
 })
