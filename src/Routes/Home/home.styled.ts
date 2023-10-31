@@ -1,4 +1,5 @@
 import { createTheme, styled } from "@mui/material";
+import Fundo from '../../assets/fundoHome.png';
 
 const theme = createTheme({
     breakpoints: {
@@ -53,7 +54,13 @@ export const fundoCard = styled("div")({
     transform: "translate(0%, -50%)",
     display: "grid",
     placeItems: "center",
-    img: {
-        width: "90%"
+    "> div": {
+        width: "90%",
+        height: "90%",
+        backgroundImage: `url(${Fundo})`,
+        backgroundAttachment: "fixed", 
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
     }
 })
