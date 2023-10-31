@@ -8,9 +8,14 @@ export const Home = () => {
         <div className='card'>
           <Skeleton variant="rounded" animation="wave" />
         </div>
+        {/*
+        
         <Style.fundoCard>
           <div></div>
         </Style.fundoCard> 
+        
+        */}
+
       </Style.containerInicio>
     </Style.secaoInicio>
   )
