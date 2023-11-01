@@ -4,6 +4,7 @@
     box-sizing: border-box;
     outline: none;
     list-style: none;
+    text-decoration: none;
   }
   
   html {

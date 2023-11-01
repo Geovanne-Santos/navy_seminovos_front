@@ -1,18 +1,29 @@
-import { useState } from "react";
 import * as Styled from "./header.styled";
 import Logo from "../../assets/logo.png";
-//import { FaBarsStaggered, FaXmark } from "react-icons/fa6"
-
-export const Header = () => {
-  const [Menu, AbreMenu] = useState(false);
 
 
-  const toggleMenu = () => {
-    AbreMenu(!Menu);
-  }
+export const MenuAberto = ({menuAberto}: {menuAberto: boolean}): React.ReactElement => {
 
-  if(Menu) {
-    console.log("Tá ativado")
+  return(
+    <Styled.MenuAberto className={menuAberto ? "aberto" : ""}>
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li><a href="/">Sobre</a></li>
+        <li><a href="/">Produtos</a></li>
+      </ul>
+    </Styled.MenuAberto>
+  )
+}
+
+interface HeaderProps {
+  menuAberto: boolean,
+  setMenuAberto: Function
+}
+
+export const Header = ({menuAberto, setMenuAberto}: HeaderProps): React.ReactElement => {
+
+  const toggleMenu = (): void => {
+    setMenuAberto(!menuAberto);
   }
 
   return (
@@ -25,8 +36,7 @@ export const Header = () => {
           />
         </Styled.logo>
         
-        <Styled.IconeHamburguer toggleMenu={Menu} onClick={toggleMenu}>
-          <div></div>
+        <Styled.IconeHamburguer toggleMenu={menuAberto} onClick={toggleMenu}>
           <div className="metade"></div>
           <div></div>
           <div className="metade"></div>

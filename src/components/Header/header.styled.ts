@@ -43,12 +43,13 @@ interface IconeHamburguerProps {
 export const IconeHamburguer = styled('div')<IconeHamburguerProps>(({ toggleMenu }) => ({
   cursor: "pointer",
   position: "relative",
-  height: "30px",
-  width: "38px",
+  height: "25px",
+  width: "35px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
   transition: ".3s ease-in-out",
+  zIndex: "99",
 
   "& > div": {
     position: 'relative',
@@ -57,21 +58,38 @@ export const IconeHamburguer = styled('div')<IconeHamburguerProps>(({ toggleMenu
     borderRadius: "2px",
     backgroundColor: "#545454",
     transition: ".3s ease-in-out",
-
-    "&.metade": {
-      width: toggleMenu ? "100%" : "70%",
-      opacity: toggleMenu ? "0" : "1"
-    }
   },
 
   "& > div:nth-of-type(1)": {
-    transformOrigin: 'center',
-    transform: toggleMenu ? 'rotate(45deg) translate(7px,7px)' : '',
+    width: toggleMenu ? "100%" : "70%",
+    transform: toggleMenu ? 'rotate(45deg) translate(8.5px, 7px)' : '',
+  },
+
+  "& > div:nth-of-type(2)": {
+    opacity: toggleMenu ? "0" : "1",
   },
 
   "& > div:nth-of-type(3)": {
-    transformOrigin: 'center',
-    transform: toggleMenu ? 'rotate(-45deg) translate(7px,-7px)' : '',
+    width: toggleMenu ? "100%" : "70%",
+    transform: toggleMenu ? 'rotate(-45deg) translate(8.5px,-7px)' : '',
   },
 }));
 
+export const MenuAberto = styled('div')({
+  display: "grid",
+  placeItems: "center",
+  position: "fixed",
+  top: "0",
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgb(187, 184, 184, 0.6%)",
+  backdropFilter: "blur(1rem)",
+  transition: "opacity .3s ease-in-out",
+  opacity: "0",
+  "&.aberto": {
+    opacity: "1",
+  },
+  "ul": {
+    textAlign: "center"
+  }
+});
