@@ -84,10 +84,10 @@ export const MenuAberto = styled('div')({
   height: "100%",
   backgroundColor: "rgb(187, 184, 184, 0.6%)",
   backdropFilter: "blur(1rem)",
-  transition: "opacity .3s ease-in-out",
-  opacity: "0",
+  transition: "visibility .3s ease-in-out",
+  visibility: "0",
   "&.aberto": {
-    opacity: "1",
+    visibility: "1",
   },
   "ul": {
     textAlign: "center"

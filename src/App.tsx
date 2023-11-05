@@ -15,7 +15,7 @@ export const App = () => {
         <AppRouter /> 
       </main>
 
-      <MenuAberto menuAberto={menuAberto}/>
+      {menuAberto && <MenuAberto menuAberto={menuAberto}/>} 
     </>
   )
 };
