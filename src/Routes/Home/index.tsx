@@ -1,33 +1,26 @@
 import { useEffect, useState } from "react";
-import { Autocomplete, TextField } from "../../../node_modules/@mui/material/index";
+import { Autocomplete, TextField } from "@mui/material";
 import * as Style from "./home.styled";
 
 export const Home = () => {
-
+  const [ufData, setUfData] = useState([]);
   const [cidadeData, setCidadeData] = useState([]);
-  const [textoBuscado, setTextoBuscado] = useState("");
-  const [cidadeFiltrada, setCidadeFiltrada] = useState([]);
+  const [selectedUf, setSelectedUf] = useState(null);
 
   useEffect(() => {
-    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/distritos')
-      .then(response => response.json())
-      .then(data => setCidadeData(data));
-  }, [])
+    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/")
+      .then((response) => response.json())
+      .then((data) => setUfData(data));
+  }, []);
 
   useEffect(() => {
-    const filtrados = cidadeData.filter(cidade =>
-      cidade.nome.toLowerCase().includes(textoBuscado.toLowerCase())
-    );
-
-    setCidadeFiltrada(filtrados);
-  }, [textoBuscado, cidadeData]);
-
-  const cidades: any[] = [];
-
-  for (let i = 0; i < cidadeData.length; i++) {
-    cidades.push(cidadeData[i]);
-  }
-  console.log(cidades)
+    selectedUf &&
+      fetch(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf.id}/municipios`
+      )
+        .then((response) => response.json())
+        .then((data) => setCidadeData(data));
+  }, [selectedUf]);
 
   return (
     <Style.secaoInicio>
@@ -38,22 +31,45 @@ export const Home = () => {
           </h2>
           <div className="secao-card">
             <Autocomplete
+              id="uf-select"
+              options={ufData}
+              getOptionLabel={(uf) => (uf ? uf.nome : "")}
+              onChange={(_, newValue) => setSelectedUf(newValue)}
+              renderInput={(params) => (
+                <TextField {...params} label="Selecione a UF" />
+              )}
+            />
+
+            <Autocomplete
               id="auto-complete"
               autoComplete
               includeInputInList
-              options={cidadeFiltrada}
+              options={cidadeData}
               getOptionLabel={(cidade) => (cidade ? cidade.nome : "")}
-              value={cidadeFiltrada.find((cidade) => cidade.nome === textoBuscado) || null}
-              onInputChange={(_, newInputValue) => setTextoBuscado(newInputValue)}
               sx={{ width: 150 }}
               renderInput={(params) => (
                 <TextField {...params} label="Selecione a cidade" />
               )}
-              isOptionEqualToValue = {(option, value) => option.nome === value.nome}
-              getOptionSelected = {(option, value) => option.nome === value.nome}
+              isOptionEqualToValue={(option, value) =>
+                option.nome === value.nome
+              }
+              filterOptions={(options, params) => {
+                const filtrados = options.filter((cidade) =>
+                  cidade.nome
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase()
+                    .includes(
+                      params.inputValue
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "")
+                        .toLowerCase()
+                    )
+                );
+
+                return filtrados.slice(0, 20);
+              }}
             />
-
-
           </div>
         </div>
 

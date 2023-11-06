@@ -1,4 +1,3 @@
-"use client";
 import { styled } from "@mui/material";
 
 export const header = styled("header")({
@@ -90,9 +89,9 @@ export const MenuAberto = styled('div')({
   borderRadius: ".6rem",
   backdropFilter: "blur(1rem)",
   transition: "visibility .3s ease-in-out",
-  visibility: "0",
+  visibility: "hidden",
   "&.aberto": {
-    visibility: "1",
+    visibility: "visible",
   },
   "ul": {
     "& > li a": {
