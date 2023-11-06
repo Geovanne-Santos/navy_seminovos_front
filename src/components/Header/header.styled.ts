@@ -2,6 +2,7 @@
 import { styled } from "@mui/material";
 
 export const header = styled("header")({
+  position: "relative",
   padding: "1.5rem 5rem",
   display: "flex",
   width: "100%",
@@ -41,48 +42,52 @@ interface IconeHamburguerProps {
 }
 
 export const IconeHamburguer = styled('div')<IconeHamburguerProps>(({ toggleMenu }) => ({
-  cursor: "pointer",
   position: "relative",
-  height: "25px",
-  width: "35px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  transition: ".3s ease-in-out",
-  zIndex: "99",
 
-  "& > div": {
-    position: 'relative',
-    width: "100%",
-    height: "4px",
-    borderRadius: "2px",
-    backgroundColor: "#545454",
+  "& .iconeHamburguer": {
+    cursor: "pointer",
+    height: "30px",
+    width: "35px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     transition: ".3s ease-in-out",
-  },
-
-  "& > div:nth-of-type(1)": {
-    width: toggleMenu ? "100%" : "70%",
-    transform: toggleMenu ? 'rotate(45deg) translate(8.5px, 7px)' : '',
-  },
-
-  "& > div:nth-of-type(2)": {
-    opacity: toggleMenu ? "0" : "1",
-  },
-
-  "& > div:nth-of-type(3)": {
-    width: toggleMenu ? "100%" : "70%",
-    transform: toggleMenu ? 'rotate(-45deg) translate(8.5px,-7px)' : '',
-  },
+  
+    "& > div": {
+      position: 'relative',
+      width: "100%",
+      height: "4px",
+      borderRadius: "2px",
+      backgroundColor: "#545454",
+      transition: ".3s ease-in-out",
+    },
+  
+    "& > div:nth-of-type(1)": {
+      width: toggleMenu ? "100%" : "70%",
+      transform: toggleMenu ? 'rotate(45deg) translate(10px, 10px)' : '',
+    },
+  
+    "& > div:nth-of-type(2)": {
+      opacity: toggleMenu ? "0" : "1",
+    },
+  
+    "& > div:nth-of-type(3)": {
+      width: toggleMenu ? "100%" : "70%",
+      transform: toggleMenu ? 'rotate(-45deg) translate(8px,-9px)' : '',
+    },
+  }
 }));
 
 export const MenuAberto = styled('div')({
   display: "grid",
-  placeItems: "center",
-  position: "fixed",
-  top: "0",
-  width: "100%",
-  height: "100%",
-  backgroundColor: "rgb(187, 184, 184, 0.6%)",
+  position: "absolute",
+  top: "150%",
+  right: "150%",
+  width: "20rem",
+  zIndex: "99",
+  backgroundColor: "#FFFDFD",
+  boxShadow: "0px 0px 1.6rem rgba(0,0,0,.4)",
+  borderRadius: ".6rem",
   backdropFilter: "blur(1rem)",
   transition: "opacity .3s ease-in-out",
   opacity: "0",
@@ -90,6 +95,15 @@ export const MenuAberto = styled('div')({
     opacity: "1",
   },
   "ul": {
-    textAlign: "center"
-  }
+    "& > li a": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: ".4rem",
+      padding: ".6rem",
+      "&:hover": {
+        backgroundColor: "rgb(200, 200, 200)",
+      }
+    },
+  },
 });
