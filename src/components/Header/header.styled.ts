@@ -89,10 +89,10 @@ export const MenuAberto = styled('div')({
   boxShadow: "0px 0px 1.6rem rgba(0,0,0,.4)",
   borderRadius: ".6rem",
   backdropFilter: "blur(1rem)",
-  transition: "opacity .3s ease-in-out",
-  opacity: "0",
+  transition: "visibility .3s ease-in-out",
+  visibility: "0",
   "&.aberto": {
-    opacity: "1",
+    visibility: "1",
   },
   "ul": {
     "& > li a": {

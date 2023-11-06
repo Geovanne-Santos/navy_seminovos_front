@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header } from "./components/Header";
+import { Header, MenuAberto } from "./components/Header";
 import { AppRouter } from "./router";
 
 export const App = () => {
@@ -14,6 +14,8 @@ export const App = () => {
       <main>
         <AppRouter /> 
       </main>
+
+      {menuAberto && <MenuAberto menuAberto={menuAberto}/>} 
     </>
   )
 };
