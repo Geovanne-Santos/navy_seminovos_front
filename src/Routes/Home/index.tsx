@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Grid, TextField } from "@mui/material";
 import * as Style from "./home.styled";
 
 export const Home = () => {
@@ -30,52 +30,53 @@ export const Home = () => {
             CONFIE NA <span>NAVY</span> PARA ENCONTRAR SEMINOVOS DE VERDADE!
           </h2>
           <div className="secao-card">
-            <Autocomplete
-              id="uf-select"
-              options={ufData}
-              getOptionLabel={(uf) => (uf ? uf.nome : "")}
-              onChange={(_, newValue) => setSelectedUf(newValue)}
-              renderInput={(params) => (
-                <TextField {...params} label="Selecione a UF" />
-              )}
-            />
+            <Grid sx={{display: "flex", placeItems: "center"}}>
+              <Autocomplete
+                sx={{ m: 1, minWidth: 120, borderRadius: 100 }}
+                options={ufData}
+                getOptionLabel={(uf) => (uf ? uf.nome : "")}
+                onChange={(_, newValue) => setSelectedUf(newValue)}
+                renderInput={(params) => (
+                  <TextField {...params} label="Selecione a UF" variant="outlined" />
+                )}
+              />
 
-            <Autocomplete
-              id="auto-complete"
-              autoComplete
-              includeInputInList
-              options={cidadeData}
-              getOptionLabel={(cidade) => (cidade ? cidade.nome : "")}
-              sx={{ width: 150 }}
-              renderInput={(params) => (
-                <TextField {...params} label="Selecione a cidade" />
-              )}
-              isOptionEqualToValue={(option, value) =>
-                option.nome === value.nome
-              }
-              filterOptions={(options, params) => {
-                const filtrados = options.filter((cidade) =>
-                  cidade.nome
-                    .normalize("NFD")
-                    .replace(/[\u0300-\u036f]/g, "")
-                    .toLowerCase()
-                    .includes(
-                      params.inputValue
-                        .normalize("NFD")
-                        .replace(/[\u0300-\u036f]/g, "")
-                        .toLowerCase()
-                    )
-                );
+              <Autocomplete
+                includeInputInList
+                disabled={!selectedUf}
+                options={cidadeData}
+                getOptionLabel={(cidade) => (cidade ? cidade.nome : "")}
+                sx={{ width: 150 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Selecione a cidade" />
+                )}
+                isOptionEqualToValue={(option, value) =>
+                  option.nome === value.nome
+                }
+                filterOptions={(options, params) => {
+                  const filtrados = options.filter((cidade) =>
+                    cidade.nome
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .toLowerCase()
+                      .includes(
+                        params.inputValue
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "")
+                          .toLowerCase()
+                      )
+                  );
 
-                return filtrados.slice(0, 20);
-              }}
-            />
+                  return filtrados.slice(0, 20);
+                }}
+                />
+            </Grid>
           </div>
         </div>
 
-        <Style.fundoCard>
+        {/*         <Style.fundoCard>
           <div></div>
-        </Style.fundoCard>
+        </Style.fundoCard> */}
       </Style.containerInicio>
     </Style.secaoInicio>
   );

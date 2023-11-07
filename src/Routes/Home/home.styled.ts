@@ -25,21 +25,34 @@ export const containerInicio = styled("div")({
   width: "90%",
   height: "100%",
   position: "relative",
-  backgroundColor: "#FB5B4D",
   borderRadius: "5rem",
   borderTopLeftRadius: "20rem",
   borderBottomRightRadius: "20rem",
+  backgroundColor: "#0400E0",
   ".card": {
-    width: "20%",
-    height: theme.spacing(30),
+    width: "30%",
     display: "grid",
     placeItems: "center",
+    gap: theme.spacing(4),
     position: "absolute",
-    top: "50%",
-    left: "15%",
-    transform: "translate(-15%, -50%)",
-    backgroundColor: "#FAFAFA",
-    borderRadius: theme.spacing(1.2),
+    top: "40%",
+    left: "30%",
+    transform: "translate(-30%, -40%)",
+    "h2": {
+      textAlign: "center",
+      color: "white",
+      "span": {
+        color: "#45AFF1",
+      },
+    },
+    ".secao-card": {
+      display: "grid",
+      placeItems: "center",
+      borderRadius: theme.spacing(1.2),
+      backgroundColor: "#FAFAFA",
+      width: "100%",
+      height: theme.spacing(30),
+    }
   },
 });
 

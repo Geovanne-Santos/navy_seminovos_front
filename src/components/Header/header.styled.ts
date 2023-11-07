@@ -81,7 +81,7 @@ export const MenuAberto = styled('div')({
   display: "grid",
   position: "absolute",
   top: "150%",
-  right: "150%",
+  right: "50%",
   width: "20rem",
   zIndex: "99",
   backgroundColor: "#FFFDFD",
