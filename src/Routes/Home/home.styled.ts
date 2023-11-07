@@ -1,4 +1,4 @@
-import { createTheme, styled } from "@mui/material";
+import { TextField, createTheme, styled } from "@mui/material";
 import Fundo from "../../assets/fundoHome.png";
 
 const theme = createTheme({
@@ -76,4 +76,22 @@ export const fundoCard = styled("div")({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   },
+});
+
+
+export const Label = styled(TextField)({
+  "& label":{
+    fontSize: theme.spacing(2),
+    color: theme.palette.primary.main,
+  },
+  "& .MuiOutlinedInput-root": {
+    borderRadius: theme.spacing(10),
+    "& .MuiInputLabel-root": {
+      display: "flex",
+      alignItems: "center",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: theme.palette.primary.main,
+    },
+  }
 });

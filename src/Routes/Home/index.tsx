@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Autocomplete, Grid, TextField } from "@mui/material";
+import { Autocomplete, Grid } from "@mui/material";
 import * as Style from "./home.styled";
 
 export const Home = () => {
@@ -32,12 +32,12 @@ export const Home = () => {
           <div className="secao-card">
             <Grid sx={{display: "flex", placeItems: "center"}}>
               <Autocomplete
-                sx={{ m: 1, minWidth: 120, borderRadius: 100 }}
+                sx={{ m: 1, minWidth: 120 }}
                 options={ufData}
-                getOptionLabel={(uf) => (uf ? uf.nome : "")}
+                getOptionLabel={(uf) => (uf ? uf.sigla : "")}
                 onChange={(_, newValue) => setSelectedUf(newValue)}
                 renderInput={(params) => (
-                  <TextField {...params} label="Selecione a UF" variant="outlined" />
+                  <Style.Label {...params} label="Selecione a UF" variant="outlined" />
                 )}
               />
 
@@ -48,7 +48,7 @@ export const Home = () => {
                 getOptionLabel={(cidade) => (cidade ? cidade.nome : "")}
                 sx={{ width: 150 }}
                 renderInput={(params) => (
-                  <TextField {...params} label="Selecione a cidade" />
+                  <Style.Label {...params} label="Selecione a cidade" />
                 )}
                 isOptionEqualToValue={(option, value) =>
                   option.nome === value.nome
