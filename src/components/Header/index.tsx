@@ -1,6 +1,9 @@
 import * as Styled from "./header.styled";
 import Logo from "../../assets/logo.png";
 import { PiMagnifyingGlassDuotone } from 'react-icons/pi';
+import { BsPeopleFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { useEffect, useRef } from "react";
+
 
 export const MenuAberto = ({
   menuAberto,
@@ -11,13 +14,13 @@ export const MenuAberto = ({
     <Styled.MenuAberto className={menuAberto ? "aberto" : ""}>
       <ul>
         <li>
-          <a href="/"> <PiMagnifyingGlassDuotone /> Início</a>
+          <a href="/"> <PiMagnifyingGlassDuotone /> Buscar carros</a>
         </li>
         <li>
-          <a href="/">Sobre</a>
+          <a href="/Sobre"> <BsPeopleFill /> Quem somos</a>
         </li>
         <li>
-          <a href="/"> <PiMagnifyingGlassDuotone /> Produtos</a>
+          <a href="/"> <BsFillTelephoneFill /> Contato</a>
         </li>
       </ul>
     </Styled.MenuAberto>
@@ -37,6 +40,22 @@ export const Header = ({
     setMenuAberto(!menuAberto);
   };
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clicarForaMenu = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setMenuAberto(false);
+      }
+    };
+
+    document.addEventListener('mousedown', clicarForaMenu);
+  
+    return () => {
+      document.removeEventListener('mousedown', clicarForaMenu);
+    }
+  }, [menuAberto])
+
   return (
     <Styled.header>
       <Styled.navbar>
@@ -50,7 +69,9 @@ export const Header = ({
             <div></div>
             <div className="metade"></div>
           </div>
-          {menuAberto && <MenuAberto menuAberto={menuAberto} />}
+          <div ref={ref}>
+            {menuAberto && <MenuAberto menuAberto={menuAberto} />}
+          </div>
         </Styled.IconeHamburguer>
       </Styled.navbar>
     </Styled.header>

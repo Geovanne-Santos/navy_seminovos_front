@@ -1,4 +1,6 @@
-import { styled } from "@mui/material";
+import { createTheme, styled } from "@mui/material";
+
+const theme = createTheme();
 
 export const header = styled("header")({
   position: "relative",
@@ -82,11 +84,10 @@ export const MenuAberto = styled('div')({
   position: "absolute",
   top: "150%",
   right: "50%",
-  width: "20rem",
   zIndex: "99",
   backgroundColor: "#FFFDFD",
   boxShadow: "0px 0px 1.6rem rgba(0,0,0,.4)",
-  borderRadius: ".6rem",
+  borderRadius: theme.spacing(1.2),
   backdropFilter: "blur(1rem)",
   transition: "visibility .3s ease-in-out",
   visibility: "hidden",
@@ -94,15 +95,31 @@ export const MenuAberto = styled('div')({
     visibility: "visible",
   },
   "ul": {
-    "& > li a": {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: ".4rem",
-      padding: ".6rem",
-      "&:hover": {
-        backgroundColor: "rgb(200, 200, 200)",
-      }
+    "& > li":{
+      "&:first-of-type a:hover": {
+        borderTopLeftRadius: theme.spacing(1.2),
+        borderTopRightRadius: theme.spacing(1.2)
+      },
+      "&:last-of-type a:hover":{
+        borderBottomLeftRadius: theme.spacing(1.2),
+        borderBottomRightRadius: theme.spacing(1.2)
+      },
+      "& a": {
+        color: "#545454",
+        display: "grid",
+        gridTemplateColumns: "20% 70%",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: theme.spacing(2.5),
+        padding: theme.spacing(1, 5),
+        transition: ".5s ease",
+        "&:hover": {
+          backgroundColor: "rgb(200, 200, 200)",
+        },
+        "& svg": {
+          fontSize: theme.spacing(3),
+        }
+      },
     },
-  },
+  },  
 });

@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Autocomplete, Grid } from "@mui/material";
 import * as Style from "./home.styled";
+import { ufUrl, cidadeUrl } from "../../api/utils/consultaCidades";
+import { useQuery } from "react-query";
+
+
+
+interface IbgeTypes {
+  id: number,
+  sigla: string,
+  nome: string,
+}
+
 
 export const Home = () => {
-  const [ufData, setUfData] = useState([]);
-  const [cidadeData, setCidadeData] = useState([]);
-  const [selectedUf, setSelectedUf] = useState(null);
+  const [selectedUf, setSelectedUf] = useState<IbgeTypes | null>(null);
 
-  useEffect(() => {
-    fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/")
-      .then((response) => response.json())
-      .then((data) => setUfData(data));
-  }, []);
-
-  useEffect(() => {
-    selectedUf &&
-      fetch(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf.id}/municipios`
-      )
-        .then((response) => response.json())
-        .then((data) => setCidadeData(data));
-  }, [selectedUf]);
+  const { data: ufData = [] } = useQuery<IbgeTypes[]>("uf", ufUrl);
+  const { data: cidadeData = []} = useQuery<IbgeTypes[]>(
+    ["cidade", selectedUf],
+    () => (selectedUf ? cidadeUrl(selectedUf.id) : Promise.resolve([])),
+    { enabled: !!selectedUf }
+  );
 
   return (
     <Style.secaoInicio>
