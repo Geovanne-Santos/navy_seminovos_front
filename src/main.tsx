@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { App } from "./App";
 import "./Global.css"
 import '../src/assets/fav_escuro.png'
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const temaEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches || false;
 
@@ -19,8 +20,12 @@ const trocarFavicon = (e: boolean) => {
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => trocarFavicon(e.matches));
 trocarFavicon(temaEscuro);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}> 
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
 );

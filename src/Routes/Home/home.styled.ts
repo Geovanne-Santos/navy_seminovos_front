@@ -81,17 +81,9 @@ export const fundoCard = styled("div")({
 
 export const Label = styled(TextField)({
   "& label":{
-    fontSize: theme.spacing(2),
-    color: theme.palette.primary.main,
+    fontSize: theme.spacing(1.5),
   },
   "& .MuiOutlinedInput-root": {
     borderRadius: theme.spacing(10),
-    "& .MuiInputLabel-root": {
-      display: "flex",
-      alignItems: "center",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: theme.palette.primary.main,
-    },
   }
 });
