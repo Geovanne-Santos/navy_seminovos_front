@@ -116,7 +116,7 @@ export const MenuAberto = styled('div')({
         "&:hover": {
           backgroundColor: "rgb(200, 200, 200)",
         },
-        "& svg": {
+        "& svg path, & svg g": {
           fontSize: theme.spacing(3),
         }
       },
