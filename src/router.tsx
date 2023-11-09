@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Sobre } from "./Routes/Sobre";
-import { Home } from "./Routes/Home";
+import { Sobre } from "./pages/Sobre";
+import { Home } from "./pages/Home";
 
 export const AppRouter = () => (
     <Router>
