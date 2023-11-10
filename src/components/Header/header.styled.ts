@@ -3,7 +3,11 @@ import { createTheme, styled } from "@mui/material";
 const theme = createTheme();
 
 export const header = styled("header")({
-  position: "relative",
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 99,
   padding: "1.5rem 5rem",
   display: "flex",
   width: "100%",

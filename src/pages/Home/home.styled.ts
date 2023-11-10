@@ -91,5 +91,7 @@ export const secaoCategorias = styled("section")({
   "& .galeriaCategorias": {
     backgroundColor: "#F67878",
     padding: theme.spacing(5,10),
+    display: "flex",
+    justifyContent: "space-between"
   }
 });
