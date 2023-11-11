@@ -115,8 +115,9 @@ export const MenuAberto = styled('div')({
         justifyContent: "flex-start",
         alignItems: "center",
         gap: theme.spacing(2.5),
-        padding: theme.spacing(1, 5),
+        padding: theme.spacing(1, 4),
         transition: ".5s ease",
+        whiteSpace: "nowrap",
         "&:hover": {
           backgroundColor: "rgb(200, 200, 200)",
         },
