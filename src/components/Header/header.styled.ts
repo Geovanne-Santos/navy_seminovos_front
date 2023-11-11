@@ -8,7 +8,7 @@ export const header = styled("header")({
   left: 0,
   right: 0,
   zIndex: 99,
-  padding: "1.5rem 5rem",
+  padding: "1rem 5rem",
   display: "flex",
   width: "100%",
   backgroundColor: "#FFFDFD",
@@ -31,7 +31,7 @@ export const navbar = styled("nav")({
 });
 
 export const logo = styled('div')({
-  width: "15rem",
+  width: "20rem",
   height: "auto",
   position: "relative",
   "@media (max-width: 600px)": {

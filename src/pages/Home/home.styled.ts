@@ -15,7 +15,7 @@ const theme = createTheme({
 
 export const secaoInicio = styled("section")({
   width: "100%",
-  height: theme.spacing(90),
+  height: theme.spacing(80),
   display: "grid",
   placeItems: "center",
   margin: "5rem 0",
