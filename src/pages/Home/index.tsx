@@ -9,22 +9,22 @@ import Images from '../../assets/image 1.png'
 const cars = [
   {
     id: 1,
-    model: "Renault",
+    model: "Sedans",
     url: Images,
   },
   {
     id: 2,
-    model: "Tesla",
+    model: "SUVs",
     url: Images,
   },
   {
     id: 3,
-    model: "Uno",
+    model: "Picape",
     url: Images,
   },
   {
     id: 4,
-    model: "Civic",
+    model: "Hatches",
     url: Images
   }
 ];
