@@ -4,18 +4,17 @@ const theme = createTheme({});
 
 export const BuscarCarroContainer = styled("section")({
     width: "90%",
-    backgroundColor: "gray",
     margin: "0 5%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center"
 });
 
 export const BuscarCarroGaleria = styled("div")({
     display: "grid",
-    gap: theme.spacing(1.2),
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: theme.spacing(6),
+
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    flexWrap: "wrap",
     justifyContent: "space-around",
-    width: "100%"
+    width: "80%",
+    margin: "0 auto"
 })
 

@@ -1,12 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { BuscarCarro } from "./pages/BuscarCarro";
 import { Home } from "./pages/Home";
+import { App } from "./App";
 
-export const AppRouter = () => (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="BuscarCarro" element={<BuscarCarro />} />
-      </Routes>
-    </Router>
-  );
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "BuscarCarro",
+        element: <BuscarCarro />
+      }
+    ]
+  }
+]);

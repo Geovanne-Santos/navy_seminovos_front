@@ -90,8 +90,9 @@ export const secaoCategorias = styled("section")({
   },
   "& .galeriaCategorias": {
     backgroundColor: "#F67878",
-    padding: theme.spacing(5,10),
-    display: "flex",
-    justifyContent: "space-between"
+    padding: `${theme.spacing(5)} 5%`,
+    display: "grid",
+    gridTemplateColumns: "20% 20% 20% 20%",
+    placeContent: "space-between"
   }
 });

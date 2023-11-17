@@ -31,7 +31,7 @@ export const navbar = styled("nav")({
 });
 
 export const logo = styled('div')({
-  width: "20rem",
+  width: "15rem",
   height: "auto",
   position: "relative",
   "@media (max-width: 600px)": {

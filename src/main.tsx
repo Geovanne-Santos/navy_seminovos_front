@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "./App";
 import "./Global.css"
 import '../src/assets/fav_escuro.png'
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 const temaEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches || false;
 
@@ -25,7 +26,7 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}> 
-      <App />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,
 );

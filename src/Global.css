@@ -19,10 +19,11 @@
   
   body {
     font-size: 1.6rem;
+    background-color: #FBFBFF;
   }
 
   main {
-    margin-top: 15rem;
+    margin-top: 13rem;
   }
   
   h1 {

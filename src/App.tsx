@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Header } from "./components/Header";
-import { AppRouter } from "./router";
+import { Outlet } from "react-router-dom";
 
 export const App = () => {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -13,7 +13,7 @@ export const App = () => {
         setMenuAberto={setMenuAberto}
       />
       <main>
-        <AppRouter /> 
+        <Outlet /> 
       </main>
     </>
   )
