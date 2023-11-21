@@ -5,6 +5,7 @@ import { ufUrl, cidadeUrl } from "../../api/utils/consultaCidades";
 import { useQuery } from "react-query";
 import { CategoriaCard } from "../../components/CategoriaCard";
 import Images from '../../assets/image 1.png'
+import { autoCompleteStyles } from "./home.styled";
 
 const cars = [
   {
@@ -76,13 +77,13 @@ export const Home = () => {
             <div className="secao-card">
               <div>
                 <Autocomplete
-                  sx={{ "& .MuiOutlinedInput-root": { borderRadius: "10rem" } }}
+                  sx={autoCompleteStyles}
                   options={ufData}
                   getOptionLabel={(uf) => (uf ? uf.sigla : "")}
                   onChange={(_, newValue) => setSelectedUf(newValue)}
                   renderInput={(params) => (
                     <Style.Input
-                      sx={{ maxWidth: 100 }}
+                      sx={{ width: 110 }}
                       {...params}
                       label="UF"
                       variant="outlined"
@@ -95,9 +96,12 @@ export const Home = () => {
                   disabled={!selectedUf}
                   options={cidadeData}
                   getOptionLabel={(cidade) => (cidade ? cidade.nome : "")}
-                  sx={{ "& .MuiOutlinedInput-root": { borderRadius: "10rem" } }}
+                  sx={autoCompleteStyles}
                   renderInput={(params) => (
-                    <Style.Input {...params} label="Selecione a cidade" />
+                    <Style.Input 
+                      sx={{width: 200 }}  
+                      {...params} 
+                      label="Selecione a cidade" />
                   )}
                   isOptionEqualToValue={(option, value) =>
                     option.nome === value.nome

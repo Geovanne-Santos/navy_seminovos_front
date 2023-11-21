@@ -96,3 +96,13 @@ export const secaoCategorias = styled("section")({
     placeContent: "space-between"
   }
 });
+
+
+export const autoCompleteStyles = {
+  "& .MuiOutlinedInput-root": { borderRadius: "10rem" },
+  "& .MuiOutlinedInput-root .MuiAutocomplete-endAdornment": {
+    top: "50%",
+    transform: "translateY(-50%)",
+    right: "6px"
+  },
+};
