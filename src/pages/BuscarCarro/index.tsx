@@ -1,6 +1,7 @@
 import { CarroCard } from "../../components/CarroCard";
 import * as Style from "./Buscar.styled";
 import Image from '../../assets/exemplo.png';
+import { queryCarros } from "../../api/utils/firebaseConfig";
 
 const cardExample = {
   title: "RENAULT",
@@ -12,6 +13,7 @@ const cardExample = {
   price: 62.490
 }
 
+console.log(queryCarros);
 
 export const BuscarCarro = () => {
     return (

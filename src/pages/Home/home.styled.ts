@@ -105,4 +105,7 @@ export const autoCompleteStyles = {
     transform: "translateY(-50%)",
     right: "6px"
   },
+  "& label:focus": {
+    transform: "translate(14px, -15px) scale(0.75)",
+  }
 };

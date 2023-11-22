@@ -101,7 +101,7 @@ export const Home = () => {
                     <Style.Input 
                       sx={{width: 200 }}  
                       {...params} 
-                      label="Selecione a cidade" />
+                      label="Cidade" />
                   )}
                   isOptionEqualToValue={(option, value) =>
                     option.nome === value.nome
