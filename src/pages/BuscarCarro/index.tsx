@@ -1,29 +1,53 @@
+import { useQuery } from "react-query";
 import { CarroCard } from "../../components/CarroCard";
 import * as Style from "./Buscar.styled";
-import Image from '../../assets/exemplo.png';
-import { queryCarros } from "../../api/utils/firebaseConfig";
+import { fetchCarros } from "../../api/utils/firebaseConfig";
+import { Skeleton } from "@mui/material";
 
-const cardExample = {
-  title: "RENAULT",
-  subtitle: "Renault Logan Zen 1.0",
-  tipo: "Manual",
-  km: 56.143,
-  data: 2022,
-  image: Image,
-  price: 62.490
-}
 
-console.log(queryCarros);
 
 export const BuscarCarro = () => {
+  const { isLoading, isError, data, error } = useQuery("carros", fetchCarros);
+
+  if (isLoading) {
     return (
       <Style.BuscarCarroContainer>
         <Style.BuscarCarroGaleria>
-          {
-            Array.from({ length: 12 }, (_, i) => <CarroCard key={i} title={cardExample.title} subtitle={cardExample.subtitle} tipo={cardExample.tipo} km={cardExample.km} data={cardExample.data} image={cardExample.image} price={cardExample.price}/>)
-          }
+          {Array.from({ length: 8 }).map((_, index) => (
+            <Skeleton key={index} variant="rectangular" width={210} height={118} />
+          ))}
         </Style.BuscarCarroGaleria>
       </Style.BuscarCarroContainer>
     );
-  };
-  
+  }
+
+  console.log(data)
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if (data) {
+    return (
+      <Style.BuscarCarroContainer>
+        <Style.BuscarCarroGaleria>
+          {Object.values(data).map((item, index) => (
+            <CarroCard
+              key={index}
+              title={item.marcaCarro}
+              subtitle={item.modeloCarro}
+              tipo={item.cambioCarro}
+              km={`${item.km} km`}
+              data={item.ano}
+              image={item.imagem}
+              price={item.preco}
+            />
+          ))}
+        </Style.BuscarCarroGaleria>
+      </Style.BuscarCarroContainer>
+    );
+  }
+
+  return null; // ou algum outro fallback render
+};
+

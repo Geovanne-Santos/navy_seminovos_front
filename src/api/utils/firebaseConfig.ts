@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
+import axios from "axios";
+
+//Rota dos carros Foda-Se
+export const conection = axios.get("http://localhost:3000/carros").then((response) => response)
+
 
 
 const firebaseConfig = {
@@ -17,5 +22,12 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
-  const dbRef = ref(db, '/Carro');
-  export const queryCarros = get(dbRef).then((data) => console.log(data)).catch((error) => console.error(error.message));
+  export const fetchCarros = async () => {
+      const dbRef = ref(db, "Carros");
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()){
+        return snapshot.val();
+      } else {
+        throw new Error("Nenhuma query")
+      }
+  }

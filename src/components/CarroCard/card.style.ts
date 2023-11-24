@@ -8,7 +8,8 @@ export const CarroCard = styled('div')({
     borderRadius: theme.spacing(4.5),
     boxShadow: "0 2px 5px rgba(0,0,0,0.15)",
     "& img": {
-        width: "100%"
+        width: "100%",
+        borderRadius: theme.spacing(4.5)
     },
     "& .informacaoCard": {
         width: "100%",

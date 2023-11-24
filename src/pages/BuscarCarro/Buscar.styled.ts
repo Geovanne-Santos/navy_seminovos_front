@@ -4,7 +4,7 @@ const theme = createTheme({});
 
 export const BuscarCarroContainer = styled("section")({
     width: "90%",
-    margin: "0 5%",
+    margin: "2% 5%",
 });
 
 export const BuscarCarroGaleria = styled("div")({
