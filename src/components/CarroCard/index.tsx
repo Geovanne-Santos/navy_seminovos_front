@@ -1,23 +1,25 @@
 import * as Style from './card.style';
 
-
-interface cardExampleType {
-    title: string,
-    subtitle: string,
-    tipo: string,
-    km: number,
-    data: number,
-    image: string,
-    price:number
+interface CarroCardProps {
+  marca: string;
+  modelo: string;
+  cambio: string;
+  km: number;
+  ano: number;
+  imagem: string;
+  preco: number;
 }
 
-export const CarroCard = ({title, subtitle, tipo, km, data, image, price}: cardExampleType) => {
+
+const formatarNumero = (valor: number) =>  valor.toLocaleString('pt-BR'); 
+
+export const CarroCard = ({marca, modelo, cambio, km, ano, imagem, preco}: CarroCardProps) => {
   return (
 <Style.CarroCard>
-      <img src={image} />
+      <img src={imagem} />
       <div className="informacaoCard">
-        <h1>{title}</h1>
-        <h2>{subtitle}</h2>
+        <h1>{marca}</h1>
+        <h2>{modelo}</h2>
 
         <div>
           <span>
@@ -42,7 +44,7 @@ export const CarroCard = ({title, subtitle, tipo, km, data, image, price}: cardE
                 strokeLinejoin="round"
               />
             </svg>
-            <p>{tipo}</p>
+            <p>{cambio}</p>
           </span>
           <span>
             <svg
@@ -57,7 +59,7 @@ export const CarroCard = ({title, subtitle, tipo, km, data, image, price}: cardE
                 fill="#545454"
               />
             </svg>
-            <p>{km}</p>
+            <p>{formatarNumero(km)} km</p>
           </span>
         </div>
         <span>
@@ -90,10 +92,10 @@ export const CarroCard = ({title, subtitle, tipo, km, data, image, price}: cardE
                 fill="black"
               />
             </svg>
-            <p>{data}</p>
+            <p>{ano}</p>
           </span>
 
-          <p className='preco'>R$ {price}</p>
+          <p className='preco'>R$ {formatarNumero(preco)}</p>
 
       </div>
     </Style.CarroCard>

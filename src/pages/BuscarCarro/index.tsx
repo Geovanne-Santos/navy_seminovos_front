@@ -5,24 +5,38 @@ import { fetchCarros } from "../../api/utils/firebaseConfig";
 import { Skeleton } from "@mui/material";
 
 
+interface CarroDataType {
+  marcaCarro: string;
+  modeloCarro: string;
+  cambioCarro: string;
+  km: number;
+  ano: number;
+  imagem: string;
+  preco: number;
+}
 
 export const BuscarCarro = () => {
-  const { isLoading, isError, data, error } = useQuery("carros", fetchCarros);
+  const { isLoading, isError, data, error } = useQuery<[CarroDataType]>("carros", fetchCarros);
+
+  console.log(data)
 
   if (isLoading) {
     return (
       <Style.BuscarCarroContainer>
         <Style.BuscarCarroGaleria>
           {Array.from({ length: 8 }).map((_, index) => (
-            <Skeleton key={index} variant="rectangular" width={210} height={118} />
+            <Skeleton
+              key={index}
+              variant="rectangular"
+              width={210}
+              height={118}
+            />
           ))}
         </Style.BuscarCarroGaleria>
       </Style.BuscarCarroContainer>
     );
   }
-
-  console.log(data)
-
+   
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
@@ -34,13 +48,13 @@ export const BuscarCarro = () => {
           {Object.values(data).map((item, index) => (
             <CarroCard
               key={index}
-              title={item.marcaCarro}
-              subtitle={item.modeloCarro}
-              tipo={item.cambioCarro}
-              km={`${item.km} km`}
-              data={item.ano}
-              image={item.imagem}
-              price={item.preco}
+              marca={item.marcaCarro}
+              modelo={item.modeloCarro}
+              cambio={item.cambioCarro}
+              km={item.km}
+              ano={item.ano}
+              imagem={item.imagem}
+              preco={item.preco}
             />
           ))}
         </Style.BuscarCarroGaleria>
@@ -48,6 +62,5 @@ export const BuscarCarro = () => {
     );
   }
 
-  return null; // ou algum outro fallback render
+  return null;
 };
-

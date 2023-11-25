@@ -1,6 +1,7 @@
 import * as Styled from "./header.styled";
 import Logo from "../../assets/logo.png";
 import { useEffect, useRef } from "react";
+import { Pesquisa } from "../Pesquisa";
 
 
 export const MenuAberto = ({
@@ -65,6 +66,8 @@ export const Header = ({
             <img src={Logo} alt="Logo da Navy Semi Novos" />
           </a>
         </Styled.logo>
+
+        <Pesquisa/>
 
         <Styled.IconeHamburguer toggleMenu={menuAberto} onClick={toggleMenu} ref={menuIconRef}>
           <div className="iconeHamburguer">

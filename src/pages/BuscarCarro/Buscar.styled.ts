@@ -10,7 +10,6 @@ export const BuscarCarroContainer = styled("section")({
 export const BuscarCarroGaleria = styled("div")({
     display: "grid",
     gap: theme.spacing(6),
-
     gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
     flexWrap: "wrap",
     justifyContent: "space-around",
