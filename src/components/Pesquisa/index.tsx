@@ -9,7 +9,6 @@ console.log(await fetchCarros())
 export const Pesquisa = () => {
 
     const [query, setQuery] = useState("");
-
     const buscar = (e) => {
         e.preventDefault();
         setQuery(e.target.value);

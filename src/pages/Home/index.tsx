@@ -38,15 +38,13 @@ interface IbgeTypes {
 
 
 const formatarPreco = (valor) => {
-  if(valor) {
-    // Converter o valor para um número e formatá-lo diretamente
-    const numero = Number(valor);
-    if (!isNaN(numero)) {
-      return numero.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    }
-  }
-  return '';
+  console.log(typeof valor)
+
+  
+    return valor.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' });
+
 }
+
 
 
 
@@ -65,6 +63,7 @@ export const Home = () => {
     setPrecoFormatado(formatarPreco(e.target.value));
   }
 
+  console.log(cidadeData)
 
   return (
     <>
@@ -90,6 +89,7 @@ export const Home = () => {
                     />
                   )}
                 />
+
 
                 <Autocomplete
                   includeInputInList
@@ -126,7 +126,7 @@ export const Home = () => {
               </div>
 
               <div>
-              <Style.Input placeholder="Preço" variant="outlined" value={precoFormatado} onChange={alterandoValor} />
+                <Style.Input placeholder="Preço" variant="outlined" type="number" value={precoFormatado} onChange={alterandoValor} />
                 <Style.Input placeholder="Categoria" variant="outlined" />
               </div>
 
