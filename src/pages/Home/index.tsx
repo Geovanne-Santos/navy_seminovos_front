@@ -39,14 +39,9 @@ interface IbgeTypes {
 
 const formatarPreco = (valor) => {
   console.log(typeof valor)
-
-  
     return valor.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' });
 
 }
-
-
-
 
 export const Home = () => {
   const [selectedUf, setSelectedUf] = useState<IbgeTypes | null>(null);
@@ -63,7 +58,6 @@ export const Home = () => {
     setPrecoFormatado(formatarPreco(e.target.value));
   }
 
-  console.log(cidadeData)
 
   return (
     <>

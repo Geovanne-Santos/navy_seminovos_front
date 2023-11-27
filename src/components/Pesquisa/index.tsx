@@ -4,14 +4,14 @@ import Lupa from "../../assets/lupa.svg";
 import { fetchCarros } from "../../api/utils/firebaseConfig";
 import { useState } from "react";
 
-console.log(await fetchCarros())
-
 export const Pesquisa = () => {
 
     const [query, setQuery] = useState("");
-    const buscar = (e) => {
+    const buscar = async (e) => {
         e.preventDefault();
-        setQuery(e.target.value);
+        const novaQuery = e.target.value; 
+        setQuery(novaQuery);
+        console.log(fetchCarros(query));
         console.log(query)
     }
 
