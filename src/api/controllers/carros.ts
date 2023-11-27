@@ -31,7 +31,16 @@ export const UseGetCarroPorId = (id: string) => {
 export const UsePutCarro = () => {
     return useMutation<void, CustomError, CarroDataType>(
         async (dt) => {
-            const { data } = await api.put(`/carros/`,{data: dt});
+            const { data } = await api.put(`/carros/editar`,{data: dt});
+            return data;
+        }
+    )
+};
+
+export const UseDeleteCarro = () => {
+    return useMutation<void, CustomError, string>(
+        async (id) => {
+            const { data } = await api.delete(`/carros/deletar/${id}`);
             return data;
         }
     )

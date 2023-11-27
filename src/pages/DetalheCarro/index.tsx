@@ -1,5 +1,5 @@
 import * as Style from "./DetalheCarro.styled";
-import { UseGetCarroPorId, UsePutCarro } from "../../api/controllers/carros";
+import { UseDeleteCarro, UseGetCarroPorId, UsePutCarro } from "../../api/controllers/carros";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Checkbox, Divider, FormControlLabel, Grid, InputLabel, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -50,10 +50,12 @@ export const DetalheCarro = () => {
             setKm(data.km)
             setCambioCarro(data.cambioCarro)
         }
+        
     }, [data])
 
     const {mutate} = UsePutCarro();
     const navigate = useNavigate();
+    const {mutate: deletarCarro} = UseDeleteCarro()
 
     const salvar = () => {
         mutate({
@@ -72,7 +74,16 @@ export const DetalheCarro = () => {
             km,
             cambioCarro
         })
-        navigate(0)
+        setTimeout(function() {
+            navigate(0)
+       }, 3000);
+    }
+
+    const deletar = () => {
+        deletarCarro(id || "")
+        setTimeout(function() {
+            window.location.href = "http://localhost:5173/BuscarCarro"
+       }, 3000);
     }
 
     const rows = [
@@ -112,7 +123,10 @@ export const DetalheCarro = () => {
 
                                
                                   <Style.IconButtonEdit onClick={() => setEdit(true)}><MdEdit /></Style.IconButtonEdit>
-                                  <Style.IconButtonDelete><MdDelete /></Style.IconButtonDelete>
+                                  <Style.IconButtonDelete onClick={() => {deletar();
+                                
+                                    
+                                }} ><MdDelete /></Style.IconButtonDelete>
                             
 
                             </div>
@@ -155,7 +169,7 @@ export const DetalheCarro = () => {
                             <Style.TextFieldCarro size="small" label="Assentos" value={assentos} type="number" onChange={(a) => setAssentos(parseInt(a.target.value))} />
                             <Style.TextFieldCarro size="small" label="Potência" value={potencia} type="number" onChange={(a) => setPotencia(a.target.value)} />
                             <Style.TextFieldCarro size="small" label="Kilometragem" value={km} type="number" onChange={(a) => setKm(parseInt(a.target.value))} />
-                            <Style.BtnCarro onClick={() => salvar()} >Salvar</Style.BtnCarro>
+                            <Style.BtnCarro onClick={salvar} >Salvar</Style.BtnCarro>
                         </div>}
 
                     </Grid>
