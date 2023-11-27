@@ -1,4 +1,4 @@
-import { createTheme, styled } from "@mui/material";
+import { IconButton, createTheme, styled } from "@mui/material";
 
 const theme = createTheme();
 
@@ -42,5 +42,30 @@ export const CarroCard = styled('div')({
             fontSize: theme.spacing(3.5),
             textAlign: "center"
         }
+    }
+})
+
+export const IconButtonEdit = styled(IconButton)({
+    width: '100%',
+    borderRadius: '20px',
+    color: '#fff',
+    backgroundColor: '#4444E8',
+    
+    "&:hover":{
+        backgroundColor: '#F5F5F5',
+        color: '#757575',
+    }
+    
+})
+
+export const IconButtonDelete = styled(IconButton)({
+    width: '100%',
+    borderRadius: '20px',
+    backgroundColor: '#F5F5F5',
+    color: '#757575',
+    
+    "&:hover":{
+        color: '#fff',
+        backgroundColor: '#B5151C'
     }
 })

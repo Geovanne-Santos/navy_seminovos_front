@@ -6,4 +6,7 @@ export type CarroDataType = {
     valorHora: number;
     valorKmRodado: number;
     km: number;
+    ipvaPago: boolean;
+    disponivel: boolean;
+    combustivelCarro: string;
 }

@@ -1,6 +1,11 @@
+import { Grid, IconButton } from '@mui/material';
 import * as Style from './card.style';
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 interface CarroCardProps {
+  id: string;
   marca: string;
   modelo: string;
   cambio: string;
@@ -11,9 +16,10 @@ interface CarroCardProps {
 }
 
 
-const formatarNumero = (valor: number) =>  valor.toLocaleString('pt-BR'); 
+export const formatarNumero = (valor: number) =>  valor?.toLocaleString('pt-BR'); 
 
-export const CarroCard = ({marca, modelo, cambio, km, ano, imagem, preco}: CarroCardProps) => {
+export const CarroCard = ({marca, modelo, cambio, km, ano, imagem, preco, id}: CarroCardProps) => {
+  const navigate = useNavigate();
   return (
 <Style.CarroCard>
       <img src={imagem} />
@@ -96,6 +102,11 @@ export const CarroCard = ({marca, modelo, cambio, km, ano, imagem, preco}: Carro
           </span>
 
           <p className='preco'>R$ {formatarNumero(preco)}</p>
+
+          <Grid container style={{display: 'flex', justifyContent: 'center'}}>
+         <Style.IconButtonEdit onClick={() => {navigate(`/carro/${id}`)}}>Ver mais</Style.IconButtonEdit>
+
+          </Grid>
 
       </div>
     </Style.CarroCard>

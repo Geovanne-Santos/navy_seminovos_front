@@ -42,6 +42,7 @@ export const BuscarCarro = () => {
         <Style.BuscarCarroGaleria>
           {Object.values(data).map((item, index) => (
             <CarroCard
+              id={item.id}
               key={index}
               marca={item.marcaCarro}
               modelo={item.modeloCarro}
