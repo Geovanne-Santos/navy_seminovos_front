@@ -1,24 +1,19 @@
-import { useQuery } from "react-query";
 import { CarroCard } from "../../components/CarroCard";
 import * as Style from "./Buscar.styled";
-import { fetchCarros } from "../../api/utils/firebaseConfig";
 import { Skeleton } from "@mui/material";
+import { UseGetPorModelo } from "../../api/controllers/carros";
+import { useCarrosContext } from "../../context/carrosContext";
+import { useEffect } from "react";
 
 
-interface CarroDataType {
-  marcaCarro: string;
-  modeloCarro: string;
-  cambioCarro: string;
-  km: number;
-  ano: number;
-  imagem: string;
-  preco: number;
-}
 
 export const BuscarCarro = () => {
-  const { isLoading, isError, data, error } = useQuery<[CarroDataType]>("carros", fetchCarros);
+  const {filtro} = useCarrosContext();
+  const { isLoading, isError, data, error } = UseGetPorModelo(filtro);
 
-  console.log(data)
+  useEffect(() => {
+    console.log(filtro, "sds")
+}, [filtro])
 
   if (isLoading) {
     return (

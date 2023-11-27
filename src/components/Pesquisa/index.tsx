@@ -1,17 +1,14 @@
 import { InputAdornment} from "@mui/material";
 import * as Style from "./pesquisa.styled";
 import Lupa from "../../assets/lupa.svg";
-import { fetchCarros } from "../../api/utils/firebaseConfig";
-import { useState } from "react";
+import { PesquisaProps } from "./Pesquisa.types";
 
-export const Pesquisa = () => {
+export const Pesquisa = ({query, setQuery}: PesquisaProps) => {
 
-    const [query, setQuery] = useState("");
-    const buscar = async (e) => {
+    const buscar = (e: any) => {
         e.preventDefault();
         const novaQuery = e.target.value; 
         setQuery(novaQuery);
-        console.log(fetchCarros(query));
         console.log(query)
     }
 

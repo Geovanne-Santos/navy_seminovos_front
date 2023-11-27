@@ -2,6 +2,7 @@ import * as Styled from "./header.styled";
 import Logo from "../../assets/logo.png";
 import { useEffect, useRef } from "react";
 import { Pesquisa } from "../Pesquisa";
+import { useCarrosContext } from "../../context/carrosContext";
 
 
 export const MenuAberto = ({
@@ -56,7 +57,8 @@ export const Header = ({
       document.removeEventListener('mousedown', clicarForaMenu);
     }
   }, [menuAberto])
-
+  
+  const { filtro, setFiltro } = useCarrosContext();
   return (
     <>
     <Styled.header>
@@ -67,7 +69,7 @@ export const Header = ({
           </a>
         </Styled.logo>
 
-        <Pesquisa/>
+        <Pesquisa query={filtro} setQuery={(a) => setFiltro(a)} />
 
         <Styled.IconeHamburguer toggleMenu={menuAberto} onClick={toggleMenu} ref={menuIconRef}>
           <div className="iconeHamburguer">
